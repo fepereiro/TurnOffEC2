@@ -12,8 +12,8 @@ def lambda_handler(event, context):
     print('Looking for instances.')
     ec2_client = boto3.client("ec2", region_name="eu-west-1")
     description = ec2_client.describe_instances( Filters=[ { 'Name': 'tag-key', 
-        'Values': ['entorno'] },
-        { 'Name': 'tag-value', 'Values' : ['desarrollo'] }])
+        'Values': ['env'] },
+        { 'Name': 'tag-value', 'Values' : ['dev'] }])
 
     for reservation in description["Reservations"]:
         for instance in reservation["Instances"]:
